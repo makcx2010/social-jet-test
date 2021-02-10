@@ -1,0 +1,14 @@
+# phpstorm project files
+.idea
+
+# Mac DS_Store Files
+.DS_Store
+
+# phpunit itself is not needed
+phpunit.phar
+# local phpunit config
+/phpunit.xml
+
+.bash_history
+.composer
+.env

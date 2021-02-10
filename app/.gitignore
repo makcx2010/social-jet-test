@@ -1,0 +1,25 @@
+/yii_test
+/yii_test.bat
+
+# phpstorm project files
+.idea
+# composer vendor dir
+/vendor
+# composer itself is not needed
+composer.phar
+# Mac DS_Store Files
+.DS_Store
+# phpunit itself is not needed
+phpunit.phar
+# local phpunit config
+/phpunit.xml
+
+common/runtime
+console/runtime
+frontend/runtime
+.cache
+.env
+.bash_history
+.composer
+node_modules
+package-lock.json

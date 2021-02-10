@@ -1,0 +1,67 @@
+{
+  "name": "galament/edgvr2",
+  "description": "SaaS tender platform",
+  "type": "project",
+  "license": "BSD-3-Clause",
+  "support": {
+    "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+    "forum": "http://www.yiiframework.com/forum/",
+    "wiki": "http://www.yiiframework.com/wiki/",
+    "irc": "irc://irc.freenode.net/yii",
+    "source": "https://github.com/yiisoft/yii2"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "7.3.*",
+    "ext-json": "*",
+    "ext-intl": "*",
+    "ext-imap": "*",
+    "yiisoft/yii2": "2.0.15.1",
+    "yiisoft/yii2-bootstrap": "~2.0.0",
+    "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
+    "myclabs/php-enum": "^1.6",
+    "kartik-v/yii2-widgets": "*",
+    "galament-software/spout": "*",
+    "paulzi/yii2-nested-sets": "^1.0",
+    "yii2mod/yii2-rbac": "^2.3",
+    "guzzlehttp/guzzle": "^6.5",
+    "maknz/slack": "^1.7",
+    "yiisoft/yii2-smarty": "^2.0",
+    "nesbot/carbon": "^2.18",
+    "omnilight/yii2-scheduling": "^1.1",
+    "bariew/phpquery": "^1.0",
+    "yiisoft/yii2-redis": "^2.0",
+    "yiisoft/yii2-queue": "^2.3",
+    "kartik-v/yii2-grid": "^3.3",
+    "ramsey/uuid": "^4.0",
+    "yiisoft/yii2-bootstrap4": "^2.0",
+    "aki/yii2-bot-telegram": "3.0.4"
+  },
+  "require-dev": {
+    "yiisoft/yii2-debug": "~2.0.0",
+    "yiisoft/yii2-gii": "~2.0.0",
+    "yiisoft/yii2-faker": "~2.0.0",
+    "codeception/base": "^2.2.3",
+    "codeception/verify": "~0.3.1",
+    "flow/jsonpath": "^0.4.0",
+    "consolidation/robo": "^1.0.0"
+  },
+  "config": {
+    "process-timeout": 1800,
+    "fxp-asset": {
+      "enabled": false
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "common/helpers/service-functions.php"
+    ]
+  }
+}

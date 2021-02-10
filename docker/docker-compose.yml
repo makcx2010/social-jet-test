@@ -1,0 +1,80 @@
+version: '3'
+services:
+    nginx:
+        build:
+            context: .
+            dockerfile: .docker/nginx/Dockerfile
+        volumes:
+            - ../app/:/var/www
+            - ./.docker/common/nginx/ssl:/etc/nginx/ssl
+            - ./.docker/common/nginx/nginx.conf:/etc/nginx/nginx.conf
+            - ./.docker/nginx/conf.d:/etc/nginx/conf.d
+        ports:
+            - "80:80"
+            - "443:443"
+            - "3000:3000"
+        networks:
+            - telegram-bot
+        links:
+            - php-fpm
+        env_file:
+          - .env
+    php-fpm:
+        build:
+            context: .
+            dockerfile: .docker/php-fpm/Dockerfile
+        volumes:
+            - ../app/:/var/www
+        links:
+            - mysql
+            - php-cli
+            - redis
+        environment:
+            - "DB_PORT=3306"
+            - "DB_HOST=mysql"
+        env_file:
+            - .env
+        networks:
+          - telegram-bot
+    php-cli:
+        build:
+            context: .
+            dockerfile: .docker/php-cli/Dockerfile
+        volumes:
+            - ../app/:/var/www
+            - ./.docker/common/php-cli/supervisor:/etc/supervisor/conf.d
+        links:
+            - mysql
+            - redis
+        env_file:
+            - .env
+        networks:
+            - telegram-bot
+        tty: true
+    mysql:
+        image: mysql:5.7
+        volumes:
+            - ../data/mysql:/var/lib/mysql
+        environment:
+            - "MYSQL_ROOT_PASSWORD=test"
+            - "MYSQL_USER=test"
+            - "MYSQL_PASSWORD=test"
+            - "MYSQL_DATABASE=test"
+        env_file:
+            - .env
+        ports:
+            - "33061:3306"
+        networks:
+            - telegram-bot
+    redis:
+        image: redis:alpine
+        command: ["redis-server", "--appendonly", "yes"]
+        volumes:
+            - ../data/redis:/data
+        ports:
+            - "63791:6379"
+        networks:
+            - telegram-bot
+networks:
+    telegram-bot:
+        external: true
